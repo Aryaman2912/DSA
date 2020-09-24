@@ -6,6 +6,7 @@ using namespace std;
 
 // Function to find the index to partition the array
 int partition(vector<int> &a,int l,int h){
+	// first element of the array is the pivot
 	int pivot = a[l];
 	int i = l,j = h-1;
 	while(i<j){
@@ -13,10 +14,12 @@ int partition(vector<int> &a,int l,int h){
 			i++;
 		while(a[j] > pivot)
 			j--;
+		// swap any pair of elements that occur on opposite sides of the pivot
 		if(i<j){
 			swap(a[i],a[j]);
 		}
 	}
+	// j is the postion of the pivot element
 	swap(a[l],a[j]);
 	return j;
 }
