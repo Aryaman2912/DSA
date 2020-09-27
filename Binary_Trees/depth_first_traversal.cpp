@@ -1,5 +1,4 @@
-// The below program demonstrates breadth first traversal of a binary tree
-
+// This program contains code to perform depth first traversal of a binary tree
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -58,12 +57,58 @@ void BreadthFirstTraversal(BstNode* root){
 	cout << endl;
 }
 
+// Function to perform Preorder tree traversal. 
+//Data at a node is printed first and then left and right nodes are visited
+void Preorder(BstNode* root){
+	if(root == NULL){
+		return;
+	}
+	cout << root->data << " ";
+	Preorder(root->left);
+	Preorder(root->right);
+}
+
+// Function to perform Inorder tree traversal. 
+// Left subtree is visited first, then the data at the node is printed and then the right subtree is visited
+// Inorder traversal prints elements in sorted order in a binary search tree
+void Inorder(BstNode* root){
+	if(root == NULL){
+		return;
+	}
+	Inorder(root->left);
+	cout << root->data << " ";
+	Inorder(root->right);
+}
+
+// Function to perform Postorder tree traversal.
+// Left subtree is visited first, then the right subtree and then the data at a node is printed
+void Postorder(BstNode* root){
+	if(root == NULL){
+		return;
+	}
+	Postorder(root->left);
+	Postorder(root->right);
+	cout << root->data << " ";
+}
+
+// Main function
 int main(){
 	BstNode* root = NULL;
 	// create perfect binary tree
 	root = Insert(root,20);root = Insert(root,10);root = Insert(root,40);root = Insert(root,5);root = Insert(root,15);
 	root = Insert(root,30);root = Insert(root,50);root = Insert(root,1);root = Insert(root,7);root = Insert(root,14);
 	root = Insert(root,17);root = Insert(root,22);root = Insert(root,31);root = Insert(root,45);root = Insert(root,55);
-	cout << "Breadth first traversal takes place in the following order:\n";
-	BreadthFirstTraversal(root);
+	// Print BFT for comparision
+	cout << "Breadth first traversal takes place in the following order \n";
+	BreadthFirstTraversal(root); 
+	// Preorder traversal
+	cout << "Preorder traversal takes place in the following order \n"; 
+	Preorder(root);
+	// Inorder traversal
+	cout << "\nInorder traversal takes place in the following order \n";
+	Inorder(root);
+	// Postorder traversal
+	cout << "\nPostorder traversal takes place in the following order \n";
+	Postorder(root);
+	cout << "\n";
 }
